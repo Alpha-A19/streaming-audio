@@ -21,8 +21,8 @@
 
     <hostname>localhost</hostname>
 
-   <paths>
-        <logdir>/var/log/icecast</logdir>
+    <paths>
+        <logdir>/var/log/icecast2</logdir>
         <webroot>/usr/share/icecast2/web</webroot>
         <adminroot>/usr/share/icecast2/admin</adminroot>
     </paths>
@@ -32,14 +32,6 @@
         <errorlog>error.log</errorlog>
         <loglevel>3</loglevel>
     </logging>
-
-    <security>
-        <chroot>0</chroot>
-        <changeowner>
-            <user>icecast2</user>
-            <group>icecast</group>
-        </changeowner>
-    </security>
 
     <mount type="normal">
         <mount-name>/live</mount-name>

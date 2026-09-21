@@ -1,15 +1,20 @@
 FROM alpine:latest
 
-RUN apk add --no-cache icecast nginx gettext bash
+# Instalación de paquetes (incluyendo su-exec para cambiar de usuario de forma segura)
+RUN apk add --no-cache icecast nginx gettext bash su-exec
 
-RUN mkdir -p /run/nginx /var/log/icecast2 /usr/share/nginx/html
+# Crear directorios de ejecución y de logs
+RUN mkdir -p /run/nginx /var/log/icecast /usr/share/nginx/html
 
+# Copia de archivos del proyecto
 COPY icecast.xml /etc/icecast2/icecast.xml
 COPY nginx.conf /etc/nginx/nginx.conf.template
 COPY public/ /usr/share/nginx/html/
 
-RUN chown -R icecast:icecast /var/log/icecast2 /etc/icecast2
+# Asignar permisos al usuario de Icecast en Alpine
+RUN chown -R icecast:icecast /var/log/icecast /etc/icecast2
 
 EXPOSE 8080
 
-CMD ["/bin/bash", "-c", "envsubst '${PORT}' < /etc/nginx/nginx.conf.template > /etc/nginx/nginx.conf && icecast -c /etc/icecast2/icecast.xml & nginx -g 'daemon off;'"]
+# Script de arranque: procesa Nginx, ejecuta Icecast como usuario 'icecast' e inicia Nginx
+CMD ["/bin/bash", "-c", "export PORT=${PORT:-8080} && envsubst '$PORT' < /etc/nginx/nginx.conf.template > /etc/nginx/nginx.conf && su-exec icecast icecast -c /etc/icecast2/icecast.xml & nginx -g 'daemon off;'"]

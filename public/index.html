@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reunión en Vivo</title>
+    <style>
+        body {
+            font-family: system-ui, -apple-system, sans-serif;
+            background-color: #0f172a;
+            color: #f8fafc;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            padding: 1rem;
+        }
+        .card {
+            background-color: #1e293b;
+            padding: 2rem;
+            border-radius: 1rem;
+            box-shadow: 0 10px 25px -5px rgba(0,0,0,0.5);
+            text-align: center;
+            width: 100%;
+            max-width: 360px;
+            border: 1px solid #334155;
+        }
+        h1 { font-size: 1.4rem; margin-bottom: 0.5rem; }
+        p { color: #94a3b8; font-size: 0.9rem; margin-bottom: 1.5rem; }
+        audio { width: 100%; outline: none; }
+    </style>
+</head>
+<body>
+    <div class="card">
+        <h1>🔴 Transmisión de Audio</h1>
+        <p>Optimizada para conexiones lentas.</p>
+        <audio controls preload="none">
+            <source src="/live" type="audio/mpeg">
+            Tu navegador no soporta reproducción de audio.
+        </audio>
+    </div>
+</body>
+</html>

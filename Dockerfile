@@ -12,4 +12,4 @@ RUN chown -R icecast:icecast /var/log/icecast2 /etc/icecast2
 
 EXPOSE 8080
 
-CMD ["/bin/bash", "-c", "envsubst '${PORT}' < /etc/nginx/nginx.conf.template > /etc/nginx/nginx.conf && icecast -b -c /etc/icecast2/icecast.xml && nginx -g 'daemon off;'"]
+CMD ["/bin/bash", "-c", "envsubst '${PORT}' < /etc/nginx/nginx.conf.template > /etc/nginx/nginx.conf && icecast -c /etc/icecast2/icecast.xml & nginx -g 'daemon off;'"]

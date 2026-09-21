@@ -1,7 +1,7 @@
 <icecast>
     <listen-socket>
         <port>8000</port>
-        <bind-address>127.0.0.1</bind-address>
+        <bind-address>0.0.0.0</bind-address>
     </listen-socket>
 
     <limits>
@@ -32,11 +32,20 @@
         <errorlog>error.log</errorlog>
         <loglevel>3</loglevel>
     </logging>
-<security>
+
+    <security>
         <chroot>0</chroot>
         <changeowner>
-            <user>icecast</user>
+            <user>icecast2</user>
             <group>icecast</group>
         </changeowner>
     </security>
+
+    <mount type="normal">
+        <mount-name>/live</mount-name>
+        <username>source</username>
+        <password>MiClaveSecreta123</password>
+        <max-listeners>100</max-listeners>
+        <burst-size>65536</burst-size>
+    </mount>
 </icecast>

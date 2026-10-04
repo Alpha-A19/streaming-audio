@@ -15,7 +15,7 @@
     </limits>
 
     <authentication>
-        <source-password>MiClaveSecreta123</source-password>
+    <source-password>123</source-password>
         <admin-password>MiClaveAdmin123</admin-password>
     </authentication>
 
@@ -34,9 +34,8 @@
     </logging>
 
     <mount type="normal">
-        <mount-name>/live</mount-name>
         <username>source</username>
-        <password>MiClaveSecreta123</password>
+        <password>123</password>
         <max-listeners>100</max-listeners>
         <burst-size>65536</burst-size>
     </mount>
